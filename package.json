@@ -1,12 +1,23 @@
 {
   "name": "minddaily-frontend",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
+  "author": "Vladyslav Okuskov && Josh Ibbotson",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DreamUnit/minddaily-frontend"
+  },
+  "docs": {
+    "url": ""
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "engines": {
+    "node": "21.5.0"
   },
   "dependencies": {
     "react": "^18",
