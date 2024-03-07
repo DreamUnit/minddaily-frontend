@@ -10,6 +10,8 @@ Install all packages:
 yarn install
 ```
 
+Create .env file with variables from .env.example file;
+
 Start development server:
 
 ```
