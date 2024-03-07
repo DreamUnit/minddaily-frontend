@@ -1,5 +1,3 @@
 export default function Home() {
-  return (
-    <h2>MindDaily</h2>
-  );
+  return <h2>MindDaily</h2>
 }
