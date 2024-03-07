@@ -27,7 +27,7 @@ COPY --from=builder /app/public ./public
 
 CMD yarn start
 
-FROM base as dev
+FROM base as stage
 ENV NODE_ENV=development
 RUN yarn install
 COPY . .
