@@ -11,7 +11,7 @@
     "url": ""
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8081",
     "build": "next build",
     "start": "next start",
     "format": "prettier --check .",
