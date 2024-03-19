@@ -13,23 +13,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check if secrets have data
-      run: |
-        echo "HOST: ${{ secrets.HOST }}"
-        echo "PORT: ${{ secrets.PORT }}"
-        echo "USERNAME: ${{ secrets.USERNAME }}"
-        echo "SSHKEY: ${{ secrets.SSHKEY }}"
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-    - uses: actions/checkout@v3
-    - name: Copy repository contents via scp
+    - name: Build Docker image
+      run: docker build . -f ./Dockerfile -t prod-minddaily-image:latest-dev
+
+    - name: Save Docker image as tar file
+      run: |
+          docker save -o prod-minddaily-image.tar prod-minddaily-image:latest-dev
+          chmod 664 prod-minddaily-image.tar
+
+    - name: Transfer Docker image to remote server
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOST }}
         port: ${{ secrets.PORT }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSHKEY }}
-        source: "."
-        target: /
+        source: "prod-minddaily-image.tar"
+        target: "/home/ubuntu"`
 
     - name: Executing remote command
       uses: appleboy/ssh-action@master
@@ -40,5 +43,4 @@ jobs:
         port: ${{ secrets.PORT}}
         source: '.'
         command_timeout: 10m
-        script: cd dev-folder;
-          ls
+        script: ls
