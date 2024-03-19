@@ -19,7 +19,7 @@ jobs:
 
     - name: Publish Docker image
       run: |
-        docker login -u ${{ secrets.DOCKER_REGISTRY }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
+        docker login -u ${{ secrets.DOCKER_REGISTRY }} --password-stdin ${{ secrets.DOCKER_HUB_TOKEN }}
         docker push ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.IMAGE_NAME }}  
 
   deploy:
