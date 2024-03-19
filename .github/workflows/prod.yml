@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build image
+    name: Build and publish image
     runs-on: ubuntu-latest
 
     steps:
@@ -34,7 +34,7 @@ jobs:
           echo "${{ secrets.SSHKEY }}" > ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.HOST }} > ~/.ssh/known_hosts
 
-      - name: Connect and pull
+      - name: Pull and run container
         run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ${{ secrets.WORK_DIR }} && docker compose pull && docker compose up -d && exit"
       - name: Cleanup
         run: rm -rf ~/.ssh
