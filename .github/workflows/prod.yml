@@ -18,11 +18,7 @@ jobs:
         echo "HOST: ${{ secrets.HOST }}"
         echo "PORT: ${{ secrets.PORT }}"
         echo "USERNAME: ${{ secrets.USERNAME }}"
-        echo "KEY: ${{ secrets.KEY }}"
-        echo "SSH_HOST: ${{ secrets.SSH_HOST }}"
-        echo "SSH_USER: ${{ secrets.SSH_USER }}"
-        echo "SSH_KEY: ${{ secrets.SSH_KEY }}"
-        echo "SSH_PORT: ${{ secrets.SSH_PORT }}"
+        echo "SSHKEY: ${{ secrets.SSHKEY }}"
 
     - uses: actions/checkout@v3
     - name: Copy repository contents via scp
