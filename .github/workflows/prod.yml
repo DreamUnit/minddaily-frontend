@@ -19,7 +19,7 @@ jobs:
     - name: Publish Docker image
       run: |
         docker login -u ${{ env.DOCKER_REGISTRY }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
-        docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}  
+        docker push ${{ env.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}  
 
   deploy:
     needs: build
