@@ -17,11 +17,11 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Build Docker image
-      run: docker build . -f ./Dockerfile -t prod-minddaily-image:latest-dev
+      run: docker build . -f ./Dockerfile -t prod-minddaily-image:latest-prod
 
     - name: Save Docker image as tar file
       run: |
-          docker save -o prod-minddaily-image.tar prod-minddaily-image:latest-dev
+          docker save -o prod-minddaily-image.tar prod-minddaily-image:latest-prod
           chmod 664 prod-minddaily-image.tar
 
     - name: Transfer Docker image to remote server
@@ -32,7 +32,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSHKEY }}
         source: "prod-minddaily-image.tar"
-        target: "/home/ubuntu"
+        target: "/home/ubuntu/production-images/"
 
     - name: Executing remote command
       uses: appleboy/ssh-action@master
