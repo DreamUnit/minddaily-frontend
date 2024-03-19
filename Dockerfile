@@ -7,6 +7,7 @@ EXPOSE 8081
 FROM base as builder
 WORKDIR /app
 COPY . .
+RUN yarn install
 RUN yarn build
 
 FROM base as production
