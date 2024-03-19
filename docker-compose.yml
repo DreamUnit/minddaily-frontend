@@ -5,5 +5,5 @@ services:
       context: .
       target: production
     ports:
-      - "8081:8081"
+      - "80:80"
     restart: unless-stopped
