@@ -28,11 +28,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install ssh keys
+      - name: Write SSH keys
         run: |
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           echo "${{ secrets.SSHKEY }}" > ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.HOST }} > ~/.ssh/known_hosts
+          host='${{ secrets.HOST }}'
+          hosts="$(dig +short "$host" | grep -v '\.$' | sed -z 's|\n|,|g')$host"
+          ssh-keyscan -H "$hosts" > ~/.ssh/known_hosts
 
       - name: Connect and pull
         run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ${{ secrets.WORK_DIR }} && docker compose pull && docker compose up -d && exit"
