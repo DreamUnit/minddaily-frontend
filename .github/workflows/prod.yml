@@ -3,8 +3,6 @@ name: Deploy prod-minddaily-frontend
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
 
@@ -20,7 +18,10 @@ jobs:
       run: docker build . -t vladokuskov/prod-minddaily-image:latest
 
     - name: Publush Docker image
-      run: docker push vladokuskov/prod-minddaily-image:latest
+      run: |
+        docker login -u vladokuskov -p ${{ secrets.DOCKER_HUB_TOKEN }}
+        docker push vladokuskov/prod-minddaily-image:latest
+        
 
 #    - name: Save Docker image as tar file
 #      run: |
