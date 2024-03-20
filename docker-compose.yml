@@ -1,8 +1,9 @@
 version: "3.8"
 services:
-  nextapp:
-    container_name: nextapp
-    image: nextapp
-    build: .
+  app:
+    build:
+      context: .
+      target: production
     ports:
-      - "3000:3000"
+      - "80:80"
+    restart: unless-stopped
