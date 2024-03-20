@@ -2,7 +2,7 @@ FROM node:21.5.0-alpine as base
 RUN apk add --no-cache g++ make py3-pip libc6-compat
 WORKDIR /app
 COPY package*.json ./
-EXPOSE 8081
+EXPOSE 8085
 
 FROM base as builder
 WORKDIR /app
@@ -32,7 +32,7 @@ ENV PORT 8085
 ENV HOSTNAME "0.0.0.0"
 
 
-CMD ["node", "server.js"]
+CMD yarn start -p 8085
 
 FROM base as stage
 ENV NODE_ENV=development
