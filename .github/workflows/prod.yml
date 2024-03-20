@@ -23,7 +23,7 @@ jobs:
 #        docker push ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_IMAGE_NAME }}
 
   deploy:
-    needs: build
+#    needs: build
     name: Deploy image
     runs-on: ubuntu-latest
 
