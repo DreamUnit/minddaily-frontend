@@ -26,7 +26,13 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/public ./public
 
-CMD yarn start
+EXPOSE 3000
+
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+
+
+CMD ["node", "server.js"]
 
 FROM base as stage
 ENV NODE_ENV=development
