@@ -8,7 +8,7 @@ COPY package*.json ./
 
 EXPOSE 8085
 
-ENV NODE_ENV=development
+ENV NODE_ENV=production
 
 RUN yarn install --frozen-lockfile
 
