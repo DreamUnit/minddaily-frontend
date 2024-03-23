@@ -31,11 +31,4 @@ EXPOSE 8085
 ENV PORT 8085
 ENV HOSTNAME "0.0.0.0"
 
-
 CMD yarn start -p 8085
-
-FROM base as stage
-ENV NODE_ENV=development
-RUN yarn install
-COPY . .
-CMD yarn dev
