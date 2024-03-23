@@ -10,6 +10,12 @@ COPY . .
 RUN yarn install
 RUN yarn build
 
+FROM base as test
+WORKDIR /app
+COPY . .
+RUN yarn install
+RUN yarn test
+
 FROM base as production
 WORKDIR /app
 
