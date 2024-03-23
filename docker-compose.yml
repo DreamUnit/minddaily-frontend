@@ -1,9 +1,0 @@
-version: "3.8"
-services:
-  app:
-    image: vladokuskov/prod-minddaily-frontend:latest
-    build:
-      context: .
-      target: production
-    ports:
-      - "8085:8085"
