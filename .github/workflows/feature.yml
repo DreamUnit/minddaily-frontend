@@ -1,4 +1,4 @@
-name: Deploy feature-${{ github.event_name }}-${{ github.ref }}
+name: Deploy feature
 
 on:
   push:
