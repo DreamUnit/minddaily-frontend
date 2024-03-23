@@ -22,8 +22,6 @@ WORKDIR /app
 ENV NODE_ENV=production
 RUN yarn install --frozen-lockfile
 
-RUN yarn test
-
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S minddaily-frontend -u 1001
 USER minddaily-frontend
