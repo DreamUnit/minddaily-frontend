@@ -1,0 +1,21 @@
+name: Deploy feature-${{ github.event_name }}-${{ github.ref }}
+
+on:
+  push:
+    branches: [ "**" ]
+
+jobs:
+  build:
+    name: Build image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: |
+          # Extract branch name from GITHUB_REF
+          BRANCH_NAME=$(echo $GITHUB_REF | sed 's/refs\/heads\///')
+          
+          docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_REGISTRY }}/$BRANCH_NAME:latest
