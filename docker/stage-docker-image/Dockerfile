@@ -10,13 +10,17 @@ COPY . .
 RUN yarn install
 RUN yarn build
 
+FROM base as test
+WORKDIR /app
+COPY . .
+RUN yarn install
+RUN yarn test
+
 FROM base as stage
 WORKDIR /app
 
 ENV NODE_ENV=production
 RUN yarn install --frozen-lockfile
-
-RUN yarn test
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S minddaily-frontend -u 1001
