@@ -1,12 +1,12 @@
 FROM node:21.5.0-alpine
 RUN apk add --no-cache g++ make py3-pip libc6-compat
 WORKDIR /app
-COPY package*.json ./
+COPY ./docker/prod/package*.json ./
 EXPOSE 8085
 
 FROM base as builder
 WORKDIR /app
-COPY . .
+COPY ./docker/prod .
 RUN yarn install
 RUN yarn build
 
