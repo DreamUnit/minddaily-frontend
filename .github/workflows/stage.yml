@@ -2,7 +2,7 @@ name: Deploy stage-minddaily-frontend
 
 on:
   push:
-    branches: [ "development" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -15,12 +15,12 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_STAGE_IMAGE_NAME }}:latest
+          docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_REGISTRY }}/stage-minddaily-frontend:latest
 
       - name: Publish Docker image
         run: |
           docker login -u ${{ secrets.DOCKER_REGISTRY }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker push ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_STAGE_IMAGE_NAME }}
+          docker push ${{ secrets.DOCKER_REGISTRY }}/stage-minddaily-frontend
 
   deploy:
     needs: build
