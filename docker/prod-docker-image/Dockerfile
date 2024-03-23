@@ -8,13 +8,8 @@ FROM base as builder
 WORKDIR /app
 COPY . .
 RUN yarn install
-RUN yarn build
-
-FROM base as test
-WORKDIR /app
-COPY . .
-RUN yarn install
 RUN yarn test
+RUN yarn build
 
 FROM base as production
 WORKDIR /app
