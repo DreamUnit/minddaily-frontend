@@ -2,7 +2,10 @@ name: Deploy feature-${{ github.event_name }}-${{ github.ref }}
 
 on:
   push:
-    branches: [ "**" ]
+    branches:
+      - '*'
+      - '!development'
+      - '!main'
 
 jobs:
   build:
