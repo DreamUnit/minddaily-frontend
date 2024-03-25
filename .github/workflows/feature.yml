@@ -13,9 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action
-
       - name: Build Docker image
         run: |
           docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_REGISTRY }}/stage-deployment
