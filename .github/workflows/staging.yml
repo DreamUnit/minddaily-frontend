@@ -1,4 +1,4 @@
-name: Deploy stage-minddaily-frontend-2
+name: Staging-1
 
 on:
   workflow_dispatch:
