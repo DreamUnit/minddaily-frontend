@@ -1,5 +1,4 @@
-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
-run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
+name: Deploy minddaily-fe
 
 on:
   push:
