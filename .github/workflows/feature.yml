@@ -1,4 +1,4 @@
-name: Deploy minddaily-fe
+name: Automated deployments
 
 on:
   push:
