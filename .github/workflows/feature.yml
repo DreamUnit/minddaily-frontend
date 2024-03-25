@@ -1,4 +1,4 @@
-name: Automated deployments
+name: Automated deployment
 
 on:
   push:
