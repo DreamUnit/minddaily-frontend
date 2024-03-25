@@ -14,7 +14,7 @@ RUN yarn build
 FROM base as stage
 WORKDIR /app
 
-ENV NODE_ENV=production
+ENV NODE_ENV=stage
 RUN yarn install --frozen-lockfile
 
 RUN addgroup -g 1001 -S nodejs
