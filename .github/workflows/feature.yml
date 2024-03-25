@@ -15,4 +15,4 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_REGISTRY }}/$BRANCH_NAME:latest
+          docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_REGISTRY }}/stage-deployment
