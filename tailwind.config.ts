@@ -1,4 +1,5 @@
 import { Config } from 'tailwindcss'
+import { daisyConfig } from './configs/styles/daisy.config'
 
 const config: Config = {
   content: [
@@ -9,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: 'var(--color-primary)',
+        'outline-neutral-100': 'var(--color-outline-100)',
       },
       screens: {
         'mobile-sm': { raw: '(max-width: 640px)' },
@@ -24,6 +25,8 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+
+  ...daisyConfig,
+  plugins: [require('daisyui')],
 }
 export default config
