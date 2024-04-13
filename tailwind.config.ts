@@ -1,5 +1,5 @@
 import { Config } from 'tailwindcss'
-import { daisyConfig } from './configs/styles/daisy.config'
+import { daisyConfig, colors } from './configs/style'
 
 const config: Config = {
   content: [
@@ -9,9 +9,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        'outline-neutral-100': 'var(--color-outline-100)',
-      },
+      colors,
       screens: {
         'mobile-sm': { raw: '(max-width: 640px)' },
         'mobile-md': { raw: '(max-width: 800px)' },
