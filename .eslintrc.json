@@ -1,6 +1,15 @@
 {
-  "extends": "next/core-web-vitals",
+  "root": true,
+  "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended", "plugin:prettier/recommended"],
   "rules": {
     "no-console": "warn"
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts", "*.tsx", "*.js"
+      ],
+      "parser": "@typescript-eslint/parser"
+    }
+  ]
 }
