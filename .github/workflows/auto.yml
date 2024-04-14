@@ -1,4 +1,4 @@
-name: Automated deployment
+name: Automated deployment 🤖
 
 on:
   push:
@@ -6,13 +6,13 @@ on:
 
 jobs:
   build:
-    name: Build image
+    name: Build image 🛠
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout code 🔎
         uses: actions/checkout@v3
 
-      - name: Build Docker image
+      - name: Build Docker image 🐳
         run: |
           docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_REGISTRY }}/stage-deployment
