@@ -1,3 +1,5 @@
 html[data-theme="dark"] {
-    --color-primary: #000;
+
+    /* BORDERS and OUTLINES */
+    --color-outline-neutral-100: #ffffff;
 }
