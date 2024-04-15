@@ -1,4 +1,4 @@
-import { daisyConfig } from './daisy.config'
-import { colors } from './colors.config'
+import { daisyConfig } from './daisy.config';
+import { colors } from './colors.config';
 
-export { daisyConfig, colors }
+export { daisyConfig, colors };

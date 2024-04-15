@@ -1,14 +1,14 @@
-import type { Metadata } from 'next'
-import { Inter, Roboto } from 'next/font/google'
-import './globals.css'
+import type { Metadata } from 'next';
+import { Inter, Roboto } from 'next/font/google';
+import './globals.css';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
   subsets: ['latin'],
   variable: '--font-roboto',
-})
+});
 
 export const metadata: Metadata = {
   title: 'MindDaily',
@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     shortcut: '/assets/favicon-16x16.png',
     apple: '/assets/apple-touch-icon.png',
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" data-theme="light">
@@ -39,5 +39,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  )
+  );
 }
