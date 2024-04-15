@@ -1,5 +1,5 @@
-import { Config } from 'tailwindcss'
-import { daisyConfig, colors } from './configs/style'
+import { Config } from 'tailwindcss';
+import { daisyConfig, colors } from './configs/style';
 
 const config: Config = {
   content: [
@@ -26,5 +26,5 @@ const config: Config = {
 
   ...daisyConfig,
   plugins: [require('daisyui')],
-}
-export default config
+};
+export default config;
