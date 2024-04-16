@@ -1,4 +1,4 @@
-name: Automated deployment 🤖
+name: Automated Testing and Verification 🤖
 
 on:
   push:
@@ -15,4 +15,4 @@ jobs:
 
       - name: Build Docker image 🐳
         run: |
-          docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_REGISTRY }}/stage-deployment
+          docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_USERNAME }}/stage-deployment
