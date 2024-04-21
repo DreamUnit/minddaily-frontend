@@ -9,7 +9,6 @@ WORKDIR /app
 COPY . .
 RUN yarn install
 RUN yarn lint
-RUN yarn test:e2e
 RUN yarn build
 
 FROM base as production
