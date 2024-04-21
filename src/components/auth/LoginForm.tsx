@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginSchema, LoginSchemaType } from '@/src/schemas/LoginSchema';
 import Link from 'next/link';
+import authService from '@/src/services/authService';
+import { SocialAuthType } from '@/src/@types';
 
 export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>('');
@@ -27,13 +29,17 @@ export const LoginForm = () => {
     setError('');
     setSuccess('');
 
-    startTransition(() => {
-      // TODO: graphql call
+    startTransition(async () => {
+      await authService.login(data);
     });
   };
 
   return (
     <div>
+      <h1 className="text-xl font-bold text-primary-foreground">
+        Sign in to MindDaily
+      </h1>
+
       <form id="loginForm" onSubmit={handleSubmit(onSubmit)}>
         <div>
           {errors.email && <span>{errors.email.message}</span>}
@@ -41,28 +47,44 @@ export const LoginForm = () => {
           <input
             type="email"
             id="email"
+            className="input input-sm input-bordered w-full"
+            placeholder="Email"
             {...register('email', { required: true })}
           />
         </div>
         <div>
           {errors.password && <span>{errors.password.message}</span>}
-          <label htmlFor="password">Password:</label>
           <input
-            type="text"
+            type="password"
             id="password"
+            className="input input-sm  input-bordered w-full"
+            placeholder="Password"
             {...register('password', { required: true })}
           />
         </div>
         <div>
-          <button type="submit">Login</button>
+          <button className="btn btn-accent w-full" type="submit">
+            Sign in
+          </button>
         </div>
       </form>
 
-      <div>
-        <span>or</span>
-        <button>Continue with Google</button>
-        <span>
-          Don’t have an account yet? <Link href="/auth/register">Sign up </Link>
+      <div className="flex flex-col items-center gap-2">
+        <span className="text-neutral-200">or</span>
+        <button
+          className="btn btn-neutral w-full"
+          onClick={() => authService.socialSignIn(SocialAuthType.Google)}
+        >
+          Continue with Google
+        </button>
+        <span className="text-neutral-200">
+          Don’t have an account yet?{' '}
+          <Link
+            className="font-bold text-black hover:underline"
+            href="/auth/register"
+          >
+            Sign up
+          </Link>
         </span>
       </div>
     </div>

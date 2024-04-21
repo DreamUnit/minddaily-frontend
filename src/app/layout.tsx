@@ -37,7 +37,6 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         {children}
-        <button className="btn">test</button>
       </body>
     </html>
   );

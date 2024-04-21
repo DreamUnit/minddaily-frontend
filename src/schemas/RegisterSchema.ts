@@ -12,7 +12,7 @@ export const RegisterSchema = z.object({
     .regex(/[A-Z]/, {
       message: 'Password must contain at least one uppercase letter',
     })
-    .regex(/[!@#$%^&*(),.?":{}|<>]/, {
+    .regex(/[!@#$%^&*()_,.?":{}|<>]/, {
       message: 'Password must contain at least one special symbol',
     }),
   name: z.string().min(1, {
