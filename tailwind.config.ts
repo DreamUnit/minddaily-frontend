@@ -1,5 +1,5 @@
 import { Config } from 'tailwindcss';
-import { daisyConfig, colors } from './configs/style';
+import { daisyConfig, colors } from './src/configs/style';
 
 const config: Config = {
   content: [

@@ -15,15 +15,15 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --check .",
-    "format:fix": "prettier --write --list-different .",
-    "lint": "eslint ./",
-    "lint:debug": "eslint ./ --debug",
-    "lint:fix": "eslint ./ --fix"
+    "test:e2e": "playwright test",
+    "lint": "eslint ./"
   },
   "engines": {
     "node": "21.5.0"
   },
   "dependencies": {
+    "@percy/playwright": "^1.0.5",
+    "@percy/sdk-utils": "^1.28.3",
     "axios": "^1.6.7",
     "daisyui": "^4.10.1",
     "next": "14.1.2",
@@ -31,6 +31,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@playwright/test": "^1.43.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
