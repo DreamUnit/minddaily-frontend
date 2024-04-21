@@ -23,6 +23,7 @@
     "node": "21.5.0"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@percy/playwright": "^1.0.5",
     "@percy/sdk-utils": "^1.28.3",
     "axios": "^1.6.7",
@@ -31,7 +32,9 @@
     "jest-environment-jsdom": "^29.7.0",
     "next": "14.1.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.51.3",
+    "zod": "^3.22.5"
   },
   "devDependencies": {
     "@playwright/test": "^1.43.1",
