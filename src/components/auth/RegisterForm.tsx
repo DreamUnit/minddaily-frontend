@@ -40,14 +40,22 @@ export const RegisterForm = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-xl font-bold text-primary-foreground">
+    <div className="flex w-full max-w-sm flex-col gap-2">
+      <h1 className=" my-6 text-center text-2xl font-bold text-primary-foreground">
         Sign up for MindDaily
       </h1>
 
-      <form id="registerForm" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        id="registerForm"
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-2"
+      >
         <div>
-          {errors.email && <span>{errors.email.message}</span>}
+          {errors.email && (
+            <span className="text- text-danger-300 text-sm">
+              {errors.email.message}
+            </span>
+          )}
           <input
             type="email"
             id="email"
@@ -57,23 +65,31 @@ export const RegisterForm = () => {
           />
         </div>
         <div>
-          {errors.password && <span>{errors.password.message}</span>}
-          <input
-            type="password"
-            id="password"
-            className="input input-sm input-bordered w-full"
-            placeholder="Password"
-            {...register('password', { required: true })}
-          />
-        </div>
-        <div>
-          {errors.name && <span>{errors.name.message}</span>}
+          {errors.name && (
+            <span className="text- text-danger-300 text-sm">
+              {errors.name.message}
+            </span>
+          )}
           <input
             type="text"
             id="name"
             className="input input-sm input-bordered w-full"
             placeholder="Name"
             {...register('name', { required: true })}
+          />
+        </div>
+        <div>
+          {errors.password && (
+            <span className="text- text-danger-300 text-sm">
+              {errors.password.message}
+            </span>
+          )}
+          <input
+            type="password"
+            id="password"
+            className="input input-sm input-bordered w-full"
+            placeholder="Password"
+            {...register('password', { required: true })}
           />
         </div>
         <div>

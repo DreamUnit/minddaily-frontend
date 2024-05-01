@@ -35,15 +35,22 @@ export const LoginForm = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-xl font-bold text-primary-foreground">
+    <div className="flex w-full max-w-sm flex-col gap-2">
+      <h1 className=" my-6 text-center text-2xl font-bold text-primary-foreground">
         Sign in to MindDaily
       </h1>
 
-      <form id="loginForm" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        id="loginForm"
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-2"
+      >
         <div>
-          {errors.email && <span>{errors.email.message}</span>}
-          <label htmlFor="email">Email:</label>
+          {errors.email && (
+            <span className="text- text-danger-300 text-sm">
+              {errors.email.message}
+            </span>
+          )}
           <input
             type="email"
             id="email"
@@ -53,7 +60,11 @@ export const LoginForm = () => {
           />
         </div>
         <div>
-          {errors.password && <span>{errors.password.message}</span>}
+          {errors.password && (
+            <span className="text- text-danger-300 text-sm">
+              {errors.password.message}
+            </span>
+          )}
           <input
             type="password"
             id="password"
