@@ -52,7 +52,7 @@ export const RegisterForm = () => {
       >
         <div>
           {errors.email && (
-            <span className="text- text-danger-300 text-sm">
+            <span className="text- text-sm text-danger-300">
               {errors.email.message}
             </span>
           )}
@@ -66,7 +66,7 @@ export const RegisterForm = () => {
         </div>
         <div>
           {errors.name && (
-            <span className="text- text-danger-300 text-sm">
+            <span className="text- text-sm text-danger-300">
               {errors.name.message}
             </span>
           )}
@@ -80,7 +80,7 @@ export const RegisterForm = () => {
         </div>
         <div>
           {errors.password && (
-            <span className="text- text-danger-300 text-sm">
+            <span className="text- text-sm text-danger-300">
               {errors.password.message}
             </span>
           )}
@@ -93,7 +93,11 @@ export const RegisterForm = () => {
           />
         </div>
         <div>
-          <button className="btn btn-primary w-full" type="submit">
+          <button
+            className="btn btn-primary w-full"
+            type="submit"
+            disabled={isPending}
+          >
             Sign up
           </button>
         </div>
@@ -110,7 +114,7 @@ export const RegisterForm = () => {
         <span className="text-neutral-200">
           Already have an account?{' '}
           <Link
-            className="font-bold text-black hover:underline"
+            className="font-bold text-primary-foreground  hover:underline"
             href="/auth/login"
           >
             Sign in

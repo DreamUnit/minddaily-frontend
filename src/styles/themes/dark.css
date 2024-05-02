@@ -2,7 +2,7 @@ html[data-theme="dark"] {
     /* TEXT */
     --color-primary-foreground: hsla(0, 0%, 100%);
 
-    --color-neutral-200: hsla(0, 0%, 0%, 0.75);
+    --color-neutral-200: hsla(0, 0%, 83%, 0.75);
 
     --color-danger-200: hsl(0, 89%, 64%);
     --color-danger-300: hsl(0, 75%, 59%);

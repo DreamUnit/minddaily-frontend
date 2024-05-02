@@ -47,7 +47,7 @@ export const LoginForm = () => {
       >
         <div>
           {errors.email && (
-            <span className="text- text-danger-300 text-sm">
+            <span className="text- text-sm text-danger-300">
               {errors.email.message}
             </span>
           )}
@@ -61,7 +61,7 @@ export const LoginForm = () => {
         </div>
         <div>
           {errors.password && (
-            <span className="text- text-danger-300 text-sm">
+            <span className="text- text-sm text-danger-300">
               {errors.password.message}
             </span>
           )}
@@ -74,7 +74,11 @@ export const LoginForm = () => {
           />
         </div>
         <div>
-          <button className="btn btn-accent w-full" type="submit">
+          <button
+            className="btn btn-accent w-full"
+            type="submit"
+            disabled={isPending}
+          >
             Sign in
           </button>
         </div>
@@ -88,10 +92,10 @@ export const LoginForm = () => {
         >
           Continue with Google
         </button>
-        <span className="text-neutral-200">
+        <span className="prom text-neutral-200">
           Don’t have an account yet?{' '}
           <Link
-            className="font-bold text-black hover:underline"
+            className="font-bold text-primary-foreground hover:underline"
             href="/auth/register"
           >
             Sign up
