@@ -48,35 +48,35 @@ export const LoginForm = () => {
       >
         <div>
           {errors.email && (
-            <span className="text- text-sm text-danger-300">
+            <span className="text-sm text-danger-300">
               {errors.email.message}
             </span>
           )}
           <input
             type="email"
             id="email"
-            className="input input-sm input-bordered w-full"
+            className="input input-bordered"
             placeholder="Email"
             {...register('email', { required: true })}
           />
         </div>
         <div>
           {errors.password && (
-            <span className="text- text-sm text-danger-300">
+            <span className="text-sm text-danger-300">
               {errors.password.message}
             </span>
           )}
           <input
             type="password"
             id="password"
-            className="input input-sm  input-bordered w-full"
+            className="input input-bordered"
             placeholder="Password"
             {...register('password', { required: true })}
           />
         </div>
         <div>
           <button
-            className="btn btn-accent w-full"
+            className="btn btn-accent btn-md w-full"
             type="submit"
             disabled={isPending}
           >
@@ -88,13 +88,14 @@ export const LoginForm = () => {
       <div className="flex flex-col items-center gap-2">
         <span className="text-neutral-200">or</span>
         <button
-          className="btn btn-neutral w-full"
+          className="btn btn-neutral btn-md w-full"
+          disabled={isPending}
           onClick={() => authService.socialSignIn(SocialAuthType.Google)}
         >
-          Continue with Google <IconBrandGoogleFilled size={20} />
+          <IconBrandGoogleFilled size={20} /> Continue with Google
         </button>
         <span className="prom text-neutral-200">
-          Don’t have an account yet?
+          Don’t have an account yet?{' '}
           <Link
             className="font-bold text-primary-foreground hover:underline"
             href="/auth/register"

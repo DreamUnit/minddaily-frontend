@@ -60,42 +60,42 @@ export const RegisterForm = () => {
           <input
             type="email"
             id="email"
-            className="input input-sm input-bordered w-full"
+            className="input input-bordered"
             placeholder="Email"
             {...register('email', { required: true })}
           />
         </div>
         <div>
           {errors.name && (
-            <span className="text- text-sm text-danger-300">
+            <span className="text-sm text-danger-300">
               {errors.name.message}
             </span>
           )}
           <input
             type="text"
             id="name"
-            className="input input-sm input-bordered w-full"
+            className="input input-bordered"
             placeholder="Name"
             {...register('name', { required: true })}
           />
         </div>
         <div>
           {errors.password && (
-            <span className="text- text-sm text-danger-300">
+            <span className="text-sm text-danger-300">
               {errors.password.message}
             </span>
           )}
           <input
             type="password"
             id="password"
-            className="input input-sm input-bordered w-full"
+            className="input input-bordered"
             placeholder="Password"
             {...register('password', { required: true })}
           />
         </div>
         <div>
           <button
-            className="btn btn-primary w-full"
+            className="btn btn-primary btn-md w-full"
             type="submit"
             disabled={isPending}
           >
@@ -107,10 +107,11 @@ export const RegisterForm = () => {
       <div className="flex flex-col items-center gap-2">
         <span className="text-neutral-200">or</span>
         <button
-          className="btn btn-neutral w-full"
+          className="btn btn-neutral btn-md w-full"
+          disabled={isPending}
           onClick={() => authService.socialSignIn(SocialAuthType.Google)}
         >
-          Continue with Google <IconBrandGoogleFilled size={20} />
+          <IconBrandGoogleFilled size={20} /> Continue with Google
         </button>
         <span className="text-neutral-200">
           Already have an account?{' '}

@@ -3,7 +3,9 @@ import { SocialAuthType } from '@/src/@types';
 
 class AuthService {
   register = async (data: RegisterSchemaType) => {};
+
   login = async (data: LoginSchemaType) => {};
+
   socialSignIn = async (type: SocialAuthType) => {};
 }
 
