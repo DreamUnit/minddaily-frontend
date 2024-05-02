@@ -12,6 +12,8 @@ import Link from 'next/link';
 import authService from '@/src/services/authService';
 import { SocialAuthType } from '@/src/@types';
 import { IconBrandGoogleFilled } from '@tabler/icons-react';
+import { AppError } from '@/src/models/ExpectedError';
+import toast from 'react-hot-toast';
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>('');
@@ -36,8 +38,20 @@ export const RegisterForm = () => {
     setSuccess('');
 
     startTransition(async () => {
-      await authService.register(data);
+      try {
+        await authService.register(data);
+      } catch (err: unknown) {
+        if (err instanceof AppError) toast.error(err.message);
+      }
     });
+  };
+
+  const onSocialSignIn = async (type: SocialAuthType) => {
+    try {
+      await authService.socialSignIn(type);
+    } catch (err: unknown) {
+      if (err instanceof AppError) toast.error(err.message);
+    }
   };
 
   return (
@@ -109,7 +123,7 @@ export const RegisterForm = () => {
         <button
           className="btn btn-neutral btn-md w-full"
           disabled={isPending}
-          onClick={() => authService.socialSignIn(SocialAuthType.Google)}
+          onClick={() => onSocialSignIn(SocialAuthType.Google)}
         >
           <IconBrandGoogleFilled size={20} /> Continue with Google
         </button>

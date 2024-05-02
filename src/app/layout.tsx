@@ -1,6 +1,8 @@
+import '@/src/styles/globals.css';
+
 import type { Metadata } from 'next';
 import { Inter, Roboto } from 'next/font/google';
-import '@/src/styles/globals.css';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -36,6 +38,7 @@ export default function RootLayout({
         className={`${roboto.variable} ${inter.variable}`}
         suppressHydrationWarning={true}
       >
+        <Toaster position="top-center" />
         {children}
       </body>
     </html>
