@@ -30,8 +30,10 @@ export default function RootLayout({
         className={`${roboto.variable} ${inter.variable}`}
         suppressHydrationWarning={true}
       >
-        <Toaster position="top-center" />
-        {children}
+        <div className="min-w-[250px]">
+          <Toaster position="top-center" />
+          {children}
+        </div>
       </body>
     </html>
   );
