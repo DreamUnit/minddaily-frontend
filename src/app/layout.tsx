@@ -1,16 +1,8 @@
 import '@/src/styles/globals.css';
 
 import type { Metadata } from 'next';
-import { Inter, Roboto } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  variable: '--font-roboto',
-});
+import { inter, roboto } from '@/src/styles/fonts';
 
 export const metadata: Metadata = {
   title: 'MindDaily',
