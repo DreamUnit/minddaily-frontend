@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginSchema, LoginSchemaType } from '@/src/schemas/LoginSchema';
@@ -14,7 +14,7 @@ import { AppError } from '@/src/models/ExpectedError';
 export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>('');
   const [success, setSuccess] = useState<string | undefined>('');
-  const [isPending, startTransition] = useTransition();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const {
     register,
@@ -28,24 +28,37 @@ export const LoginForm = () => {
     },
   });
 
-  const onSubmit = (data: LoginSchemaType) => {
+  const onSubmit = async (data: LoginSchemaType) => {
     setError('');
     setSuccess('');
+    setIsLoading(true);
 
-    startTransition(async () => {
-      try {
-        await authService.login(data);
-      } catch (err: unknown) {
-        if (err instanceof AppError) toast.error(err.message);
-      }
-    });
+    try {
+      await toast
+        .promise(authService.login(data), {
+          loading: 'Loading',
+          success: 'Successfully logged in',
+          error: (err: AppError) => err.message,
+        })
+        .catch(() => {});
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const onSocialSignIn = async (type: SocialAuthType) => {
+    setIsLoading(true);
+
     try {
-      await authService.socialSignIn(type);
-    } catch (err: unknown) {
-      if (err instanceof AppError) toast.error(err.message);
+      await toast
+        .promise(authService.socialSignIn(type), {
+          loading: 'Loading',
+          success: 'Successfully logged in',
+          error: (err: AppError) => err.message,
+        })
+        .catch(() => {});
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -92,7 +105,7 @@ export const LoginForm = () => {
           <button
             className="btn btn-accent btn-md w-full"
             type="submit"
-            disabled={isPending}
+            disabled={isLoading}
           >
             Sign in
           </button>
@@ -103,7 +116,7 @@ export const LoginForm = () => {
         <span className="text-neutral-200">or</span>
         <button
           className="btn btn-neutral btn-md w-full"
-          disabled={isPending}
+          disabled={isLoading}
           onClick={() => onSocialSignIn(SocialAuthType.Google)}
         >
           <IconBrandGoogleFilled size={20} /> Continue with Google
