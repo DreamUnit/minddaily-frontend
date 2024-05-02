@@ -7,6 +7,7 @@ import { LoginSchema, LoginSchemaType } from '@/src/schemas/LoginSchema';
 import Link from 'next/link';
 import authService from '@/src/services/authService';
 import { SocialAuthType } from '@/src/@types';
+import { IconBrandGoogleFilled } from '@tabler/icons-react';
 
 export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>('');
@@ -90,10 +91,10 @@ export const LoginForm = () => {
           className="btn btn-neutral w-full"
           onClick={() => authService.socialSignIn(SocialAuthType.Google)}
         >
-          Continue with Google
+          Continue with Google <IconBrandGoogleFilled size={20} />
         </button>
         <span className="prom text-neutral-200">
-          Don’t have an account yet?{' '}
+          Don’t have an account yet?
           <Link
             className="font-bold text-primary-foreground hover:underline"
             href="/auth/register"

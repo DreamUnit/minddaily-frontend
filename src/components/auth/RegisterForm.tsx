@@ -11,6 +11,7 @@ import {
 import Link from 'next/link';
 import authService from '@/src/services/authService';
 import { SocialAuthType } from '@/src/@types';
+import { IconBrandGoogleFilled } from '@tabler/icons-react';
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>('');
@@ -109,7 +110,7 @@ export const RegisterForm = () => {
           className="btn btn-neutral w-full"
           onClick={() => authService.socialSignIn(SocialAuthType.Google)}
         >
-          Continue with Google
+          Continue with Google <IconBrandGoogleFilled size={20} />
         </button>
         <span className="text-neutral-200">
           Already have an account?{' '}
