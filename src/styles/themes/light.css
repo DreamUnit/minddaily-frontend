@@ -1,5 +1,13 @@
 html[data-theme="light"] {
+    /* TEXT */
+    --color-primary-foreground: hsla(0, 0%, 0%);
+
+    --color-neutral-200: hsla(0, 0%, 0%, 0.35);
+
+    --color-danger-200: hsl(0, 89%, 64%);
+    --color-danger-300: hsl(0, 75%, 59%);
+    --color-danger-400: hsl(0, 59%, 51%);
 
     /* BORDERS and OUTLINES */
-    --color-outline-neutral-100: #000000;
+    --color-outline-neutral-100: hsl(0, 0%, 0%);
 }

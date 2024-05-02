@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BUTTON */
+.btn {
+    @apply py-[2px] px-2 min-h-8 h-auto rounded-md;
+}
+
+.btn-sm {
+    @apply min-h-8;
+}
+
+.btn-md {
+    @apply min-h-9 text-[0.9rem];
+}
+
+.btn-lg {
+    @apply min-h-12;
+}
+
+/* INPUT */
+.input {
+    @apply text-base placeholder:text-sm w-full h-10;
+}
+
+.input-sm {
+    @apply h-8;
+}
+
+.input-md {
+    @apply h-10;
+}
+
+.input-lg {
+    @apply h-12;
+}

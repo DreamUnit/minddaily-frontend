@@ -1,14 +1,8 @@
-import type { Metadata } from 'next';
-import { Inter, Roboto } from 'next/font/google';
 import '@/src/styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  variable: '--font-roboto',
-});
+import type { Metadata } from 'next';
+import { Toaster } from 'react-hot-toast';
+import { inter, roboto } from '@/src/styles/fonts';
 
 export const metadata: Metadata = {
   title: 'MindDaily',
@@ -31,12 +25,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en" data-theme="light" suppressHydrationWarning={true}>
       <body
         className={`${roboto.variable} ${inter.variable}`}
         suppressHydrationWarning={true}
       >
-        {children}
+        <div className="min-w-[250px]">
+          <Toaster position="top-center" />
+          {children}
+        </div>
       </body>
     </html>
   );
