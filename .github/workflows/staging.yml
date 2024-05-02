@@ -34,6 +34,6 @@ jobs:
           ssh-keyscan -H ${{ secrets.HOST }} > ~/.ssh/known_hosts
 
       - name: Pull and run container 🏃️
-        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd stage-minddaily && docker image prune -f && docker compose pull && docker compose up -d && exit"
+        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd stage-minddaily && docker image prune -f && docker image prune -a && docker compose pull && docker compose up -d && exit"
       - name: Cleanup 🧹
         run: rm -rf ~/.ssh
