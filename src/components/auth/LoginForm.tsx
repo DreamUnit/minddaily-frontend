@@ -9,7 +9,7 @@ import authService from '@/src/services/authService';
 import { SocialAuthType } from '@/src/@types';
 import { IconBrandGoogleFilled } from '@tabler/icons-react';
 import toast from 'react-hot-toast';
-import { AppError } from '@/src/models/ExpectedError';
+import { AppError } from '@/src/models/AppError';
 
 export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>('');
