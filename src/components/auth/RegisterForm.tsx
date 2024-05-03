@@ -108,7 +108,7 @@ export const RegisterForm = () => {
         </div>
         <div>
           {errors.password && (
-            <span className="text-sm text-danger-300">
+            <span className="text-sm text-danger-300" role="alert">
               {errors.password.message}
             </span>
           )}

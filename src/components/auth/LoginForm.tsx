@@ -88,11 +88,6 @@ export const LoginForm = () => {
           />
         </div>
         <div>
-          {errors.password && (
-            <span className="text-sm text-danger-300">
-              {errors.password.message}
-            </span>
-          )}
           <input
             type="password"
             id="password"
@@ -103,6 +98,7 @@ export const LoginForm = () => {
         </div>
         <div>
           <button
+            role="button"
             className="btn btn-accent btn-md w-full"
             type="submit"
             disabled={isLoading}
