@@ -117,7 +117,7 @@ export const LoginForm = () => {
         >
           <IconBrandGoogleFilled size={20} /> Continue with Google
         </button>
-        <span className="prom text-neutral-200">
+        <span className="text-neutral-200">
           Don’t have an account yet?{' '}
           <Link
             className="font-bold text-primary-foreground hover:underline"

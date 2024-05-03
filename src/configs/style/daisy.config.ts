@@ -32,5 +32,6 @@ export const daisyConfig = {
         },
       },
     ],
+    logs: false,
   },
 };
