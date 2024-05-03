@@ -16,7 +16,7 @@ FROM base as stage
 WORKDIR /app
 
 ENV NODE_ENV=stage
-RUN yarn install --frozen-lockfile
+RUN yarn install
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S minddaily-frontend -u 1001
