@@ -1,10 +1,9 @@
 import '@/src/styles/globals.css';
-
-import type { Metadata } from 'next';
 import { Toaster } from 'react-hot-toast';
 import { inter, roboto } from '@/src/styles/fonts';
+import { ApolloWrapper } from '../lib/ApolloWrapper';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'MindDaily',
   keywords: ['Diary', 'Notes'],
   authors: [{ name: 'Vladyslav Okuskov' }, { name: 'Josh Ibbotson' }],
@@ -32,7 +31,7 @@ export default function RootLayout({
       >
         <div className="min-w-[250px]">
           <Toaster position="top-center" />
-          {children}
+          <ApolloWrapper>{children}</ApolloWrapper>
         </div>
       </body>
     </html>
