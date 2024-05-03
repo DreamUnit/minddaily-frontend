@@ -1,5 +1,6 @@
 FROM node:21.5.0-alpine as base
 RUN apk add --no-cache g++ make py3-pip libc6-compat
+RUN apk add --no-cache git
 WORKDIR /app
 COPY package*.json ./
 EXPOSE 8081
