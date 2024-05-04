@@ -1,12 +1,10 @@
 name: Automated Testing and Verification 🤖
 
 on:
-  pull_request:
-    branches: [ main ]
-    types: [ opened, synchronize, closed ]
+  workflow_dispatch:
   push:
-    branches-ignore:
-      - main
+    paths-ignore:
+      - 'README.md'
 
 jobs:
   inspection:
