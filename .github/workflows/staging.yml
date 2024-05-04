@@ -4,6 +4,23 @@ on:
   workflow_dispatch:
 
 jobs:
+  inspection:
+    name: Run inspection 🧪
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository 🔎
+        uses: actions/checkout@v3
+
+      - name: Install dependencies 📦
+        run: yarn install
+
+      - name: Lint code ✍️️
+        run: yarn lint️
+
+      - name: Run tests ✅
+        run: yarn test
+
   build:
     name: Build and publish image 🛠️
     runs-on: ubuntu-latest
