@@ -3,6 +3,8 @@ name: Automated Testing and Verification 🤖
 on:
   push:
   pull_request:
+    branches:
+      - main
 
 jobs:
   inspection:
