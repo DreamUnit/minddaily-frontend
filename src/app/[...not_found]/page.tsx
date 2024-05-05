@@ -2,6 +2,7 @@
 
 import NotFoundIcon from '@/public/assets/icons/404.svg';
 import { useRouter } from 'next/navigation';
+import { IconArrowBack } from '@tabler/icons-react';
 
 export default function NotFoundPage() {
   const router = useRouter();
@@ -16,7 +17,7 @@ export default function NotFoundPage() {
           we`re here to help you get back on track!
         </p>
         <button onClick={() => router.push('/')} className="btn">
-          Go back home
+          <IconArrowBack /> Go back home
         </button>
       </div>
     </div>
