@@ -19,3 +19,12 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
+
+# development notes:
+
+To generate types from the graphql schema for use within components utilise the following script
+Note to ensure the backend server is running as it will call the server and check what the schema looks like:
+
+```bash
+npm run codegen
+```

@@ -4,6 +4,6 @@ const nextConfig = {
   env: {
     APP_SERVER_URL: process.env.APP_SERVER_URL,
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
