@@ -1,5 +1,6 @@
 FROM node:21.5.0-alpine as base
 RUN apk add --no-cache g++ make py3-pip libc6-compat
+RUN apk add --no-cache git
 WORKDIR /app
 COPY package*.json ./
 EXPOSE 8081
@@ -8,14 +9,13 @@ FROM base as builder
 WORKDIR /app
 COPY . .
 RUN yarn install
-RUN yarn lint
 RUN yarn build
 
 FROM base as production
 WORKDIR /app
 
 ENV NODE_ENV=production
-RUN yarn install --frozen-lockfile
+RUN yarn install
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S minddaily-frontend -u 1001

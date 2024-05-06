@@ -1,3 +1,5 @@
+[![Production 🚀](https://github.com/DreamUnit/minddaily-frontend/actions/workflows/prod.yml/badge.svg)](https://github.com/DreamUnit/minddaily-frontend/actions/workflows/prod.yml)
+
 Select correct node version:
 
 ```
