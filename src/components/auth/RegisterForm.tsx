@@ -80,7 +80,7 @@ export const RegisterForm = () => {
       >
         <div>
           {errors.email && (
-            <span className="text- text-sm text-danger-300">
+            <span className="text-sm text-danger-300">
               {errors.email.message}
             </span>
           )}
@@ -108,7 +108,7 @@ export const RegisterForm = () => {
         </div>
         <div>
           {errors.password && (
-            <span className="text-sm text-danger-300">
+            <span className="text-sm text-danger-300" role="alert">
               {errors.password.message}
             </span>
           )}

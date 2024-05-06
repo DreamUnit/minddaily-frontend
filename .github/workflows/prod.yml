@@ -4,6 +4,28 @@ on:
   workflow_dispatch:
 
 jobs:
+  inspection:
+    name: Run inspection 🧪
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Use Node.js 21.5.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: '21.5.0'
+
+      - name: Checkout repository 🔎
+        uses: actions/checkout@v3
+
+      - name: Install dependencies 📦
+        run: yarn install
+
+      - name: Lint code ✍️️
+        run: yarn lint
+
+      - name: Run tests ✅
+        run: yarn test
+
   build:
     name: Build and publish image 🛠️
     runs-on: ubuntu-latest

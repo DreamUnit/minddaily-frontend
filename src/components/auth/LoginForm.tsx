@@ -88,11 +88,6 @@ export const LoginForm = () => {
           />
         </div>
         <div>
-          {errors.password && (
-            <span className="text-sm text-danger-300">
-              {errors.password.message}
-            </span>
-          )}
           <input
             type="password"
             id="password"
@@ -103,6 +98,7 @@ export const LoginForm = () => {
         </div>
         <div>
           <button
+            role="button"
             className="btn btn-accent btn-md w-full"
             type="submit"
             disabled={isLoading}
@@ -121,7 +117,7 @@ export const LoginForm = () => {
         >
           <IconBrandGoogleFilled size={20} /> Continue with Google
         </button>
-        <span className="prom text-neutral-200">
+        <span className="text-neutral-200">
           Don’t have an account yet?{' '}
           <Link
             className="font-bold text-primary-foreground hover:underline"
