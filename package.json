@@ -24,6 +24,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@percy/sdk-utils": "^1.28.3",
+    "@svgr/webpack": "^8.1.0",
     "@tabler/icons-react": "^3.3.0",
     "@testing-library/jest-dom": "^6.4.3",
     "@testing-library/react": "^15.0.6",
