@@ -6,7 +6,7 @@ dotenv.config();
  * but will need to generate a schema in the future
  */
 const config: CodegenConfig = {
-  schema: process.env.APP_SERVER_URL,
+  schema: process.env.NEXT_PUBLIC_APP_SERVER_URL,
   documents: ['src/**/*.tsx'],
   generates: {
     './src/@types/__graphqlTypes__/': {
