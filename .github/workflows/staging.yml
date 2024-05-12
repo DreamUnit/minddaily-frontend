@@ -36,7 +36,7 @@ jobs:
 
       - name: Build Docker image 🐳
         run: |
-          docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_STAGE_IMAGE_NAME }}:latest
+          docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_STAGE_IMAGE_NAME }}:latest --build-arg APP_SERVER_URL=${{ secrets.APP_SERVER_URL }}
 
       - name: Publish Docker image 📦
         run: |
