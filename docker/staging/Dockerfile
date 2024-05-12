@@ -9,9 +9,9 @@ FROM base as builder
 WORKDIR /app
 COPY . .
 
-# Accept APP_SERVER_URL as a build argument and set it as an environment variable
-ARG APP_SERVER_URL
-ENV APP_SERVER_URL=$APP_SERVER_URL
+# Accept NEXT_PUBLIC_APP_SERVER_URL as a build argument and set it as an environment variable
+ARG NEXT_PUBLIC_APP_SERVER_URL
+ENV NEXT_PUBLIC_APP_SERVER_URL=$NEXT_PUBLIC_APP_SERVER_URL
 
 RUN yarn install
 RUN yarn build

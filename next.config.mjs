@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   env: {
-    APP_SERVER_URL: process.env.APP_SERVER_URL,
+    NEXT_PUBLIC_APP_SERVER_URL: process.env.NEXT_PUBLIC_APP_SERVER_URL,
   },
   webpack: (config) => {
     config.module.rules.push({
@@ -10,7 +10,7 @@ const nextConfig = {
       use: ['@svgr/webpack'],
     });
     return config;
-  }
-}
+  },
+};
 
-export default nextConfig
+export default nextConfig;
