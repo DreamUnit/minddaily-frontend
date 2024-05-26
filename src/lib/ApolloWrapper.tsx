@@ -6,11 +6,26 @@ import {
   NextSSRApolloClient,
   SSRMultipartLink,
 } from '@apollo/experimental-nextjs-app-support/ssr';
+import { setContext } from '@apollo/client/link/context';
+
+const forwardCookieLink = setContext(async () => {
+  return import('next/headers').then(({ cookies }) => {
+    return {
+      headers: {
+        cookie: cookies()
+          .getAll()
+          .map(({ name, value }) => `${name}=${value}`)
+          .join(';'),
+      },
+    };
+  });
+});
 
 function makeClient() {
   const httpLink = new HttpLink({
-    uri: process.env.NEXT_PUBLIC_APP_SERVER_URL,
+    uri: process.env.APP_SERVER_URL,
     fetchOptions: { cache: 'no-store' },
+    credentials: 'include',
   });
 
   return new NextSSRApolloClient({
@@ -18,9 +33,13 @@ function makeClient() {
     link:
       typeof window === 'undefined'
         ? ApolloLink.from([
+            // in a SSR environment, if you use multipart features like
+            // @defer, you need to decide how to handle these.
+            // This strips all interfaces with a `@defer` directive from your queries.
             new SSRMultipartLink({
               stripDefer: true,
             }),
+            forwardCookieLink,
             httpLink,
           ])
         : httpLink,

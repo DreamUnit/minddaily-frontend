@@ -2,7 +2,7 @@ import { LoginSchemaType, RegisterSchemaType } from '@/src/schemas';
 import { SocialAuthType } from '@/src/@types';
 
 class AuthService {
-  private baseUrl = process.env.NEXT_PUBLIC_APP_SERVER_URL;
+  private baseUrl = process.env.APP_SERVER_URL;
 
   public register = async (data: RegisterSchemaType) => {};
 
