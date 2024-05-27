@@ -6,9 +6,6 @@
 .pnp.js
 .yarn/install-state.gz
 
-# testing
-/coverage
-
 # next.js
 /.next/
 /out/
@@ -31,13 +28,6 @@ yarn-error.log*
 .env*.local
 .env
 
-# vercel
-.vercel
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/

@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   env: {
-    NEXT_PUBLIC_APP_SERVER_URL: process.env.NEXT_PUBLIC_APP_SERVER_URL,
+    APP_SERVER_URL: process.env.NEXT_PUBLIC_APP_SERVER_URL,
   },
   webpack: (config) => {
     config.module.rules.push({

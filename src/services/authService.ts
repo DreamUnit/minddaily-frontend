@@ -2,11 +2,16 @@ import { LoginSchemaType, RegisterSchemaType } from '@/src/schemas';
 import { SocialAuthType } from '@/src/@types';
 
 class AuthService {
-  register = async (data: RegisterSchemaType) => {};
+  private baseUrl = process.env.APP_SERVER_URL;
 
-  login = async (data: LoginSchemaType) => {};
+  public register = async (data: RegisterSchemaType) => {};
 
-  socialSignIn = async (type: SocialAuthType) => {};
+  public login = async (data: LoginSchemaType) => {};
+
+  public socialSignIn = async (type: SocialAuthType) => {
+    const redirectUri = `${this.baseUrl}/auth/${type}`;
+    window.location.href = redirectUri;
+  };
 }
 
 const authService = new AuthService();

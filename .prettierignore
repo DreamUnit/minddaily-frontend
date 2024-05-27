@@ -3,3 +3,4 @@
 **/.hg
 **/node_modules
 tailwind.config.js
+__graphqlTypes__

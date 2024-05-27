@@ -29,7 +29,7 @@ jobs:
       - name: Run tests ✅
         run: yarn test
         env:
-          NEXT_PUBLIC_APP_SERVER_URL: ${{ secrets.NEXT_PUBLIC_APP_SERVER_URL }}
+          NEXT_PUBLIC_APP_SERVER_URL: ${{ secrets.APP_SERVER_URL }}
 
   build:
     name: Build image 🛠
@@ -41,4 +41,6 @@ jobs:
 
       - name: Build Docker image 🐳
         run: |
-          docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_USERNAME }}/stage-deployment --build-arg NEXT_PUBLIC_APP_SERVER_URL=${{ secrets.NEXT_PUBLIC_APP_SERVER_URL }}
+          docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_USERNAME }}/stage-deployment
+        env:
+          NEXT_PUBLIC_APP_SERVER_URL: ${{ secrets.APP_SERVER_URL }}
