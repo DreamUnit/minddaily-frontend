@@ -18,13 +18,15 @@ export const metadata = {
   },
 };
 
+export const dynamic = 'force-dynamic';
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning={true}>
+    <html lang="en" data-theme="dark" suppressHydrationWarning={true}>
       <body
         className={`${roboto.variable} ${inter.variable}`}
         suppressHydrationWarning={true}
