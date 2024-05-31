@@ -34,6 +34,7 @@ export default function RootLayout({
         <div className="min-w-[250px]">
           <Toaster position="top-center" />
           <ApolloWrapper>{children}</ApolloWrapper>
+          <div>{process.env.APP_SERVER_URL}</div>
         </div>
       </body>
     </html>
