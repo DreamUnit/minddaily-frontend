@@ -36,10 +36,11 @@ jobs:
 
       - name: Build Docker image 🐳
         run: |
-          docker build -f docker/production/Dockerfile \
-          --build-arg NEXT_PUBLIC_APP_SERVER_URL=${{ secrets.APP_SERVER_URL }} \
-          --build-arg NODE_ENV=production \
-          . --tag ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROD_IMAGE_NAME }}:latest
+          docker build \
+            --build-arg NEXT_PUBLIC_APP_SERVER_URL=${{ secrets.APP_SERVER_URL }} \
+            --build-arg NODE_ENV=production \
+            -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROD_IMAGE_NAME }}:latest \
+            .
 
       - name: Publish Docker image 📦
         run: |
@@ -60,5 +61,6 @@ jobs:
 
       - name: Pull and run container 🏃️
         run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd prod-minddaily && docker image prune -f && docker image prune -a && docker compose pull && docker compose up -d && exit"
+
       - name: Cleanup 🧹
         run: rm -rf ~/.ssh

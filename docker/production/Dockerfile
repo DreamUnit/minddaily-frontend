@@ -12,7 +12,6 @@ ARG NODE_ENV
 ENV NEXT_PUBLIC_APP_SERVER_URL=$NEXT_PUBLIC_APP_SERVER_URL
 ENV NODE_ENV=$NODE_ENV
 
-WORKDIR /app
 COPY . .
 RUN yarn install
 RUN yarn build
@@ -21,20 +20,16 @@ FROM base as production
 WORKDIR /app
 
 ENV NODE_ENV=production
-RUN yarn install
+
+COPY --from=builder /app /app
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S minddaily-frontend -u 1001
 USER minddaily-frontend
-
-COPY --from=builder --chown=minddaily-frontend:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/public ./public
 
 EXPOSE 8081
 
 ENV PORT 8081
 ENV HOSTNAME "0.0.0.0"
 
-CMD yarn start -p 8081
+CMD ["yarn", "start", "-p", "8081"]
