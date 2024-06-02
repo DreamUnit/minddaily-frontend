@@ -36,7 +36,10 @@ jobs:
 
       - name: Build Docker image 🐳
         run: |
-          docker build -f docker/production/Dockerfile . --tag ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROD_IMAGE_NAME }}:latest
+          docker build -f docker/production/Dockerfile \
+          --build-arg NEXT_PUBLIC_APP_SERVER_URL=${{ secrets.APP_SERVER_URL }} \
+          --build-arg NODE_ENV=production \
+          . --tag ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROD_IMAGE_NAME }}:latest
 
       - name: Publish Docker image 📦
         run: |
