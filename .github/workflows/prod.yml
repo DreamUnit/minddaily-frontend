@@ -61,12 +61,6 @@ jobs:
           ssh-keyscan -H ${{ secrets.HOST }} > ~/.ssh/known_hosts
 
       - name: Pull and run container 🏃️
-        run: |
-          ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} <<EOF
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROD_IMAGE_NAME }}:latest
-          docker stop prod-minddaily || true
-          docker rm prod-middaily || true
-          docker run -d -p 8081:8081 --name prod-minddaily ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROD_IMAGE_NAME }}:latest EOF
+        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd prod-minddaily && docker image prune -f && docker image prune -a && docker compose pull && docker compose up -d && exit"
       - name: Cleanup 🧹
         run: rm -rf ~/.ssh
