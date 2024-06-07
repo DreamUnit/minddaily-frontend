@@ -36,7 +36,10 @@ jobs:
 
       - name: Build Docker image 🐳
         run: |
-          docker build -f docker/staging/Dockerfile . --tag ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_STAGE_IMAGE_NAME }}:latest --build-arg APP_SERVER_URL=${{ secrets.APP_SERVER_URL }}
+          docker build \
+          -f docker/app.Dockerfile \
+          -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_STAGE_IMAGE_NAME }}:latest \
+          .
 
       - name: Publish Docker image 📦
         run: |
@@ -56,6 +59,15 @@ jobs:
           ssh-keyscan -H ${{ secrets.HOST }} > ~/.ssh/known_hosts
 
       - name: Pull and run container 🏃️
-        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd stage-minddaily && docker image prune -f && docker image prune -a && docker compose pull && docker compose up -d && exit"
+        run: |
+          ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }};
+          docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_STAGE_IMAGE_NAME }};
+          docker stop stage-minddaily-frontend || true;
+          docker rm stage-minddaily-frontend || true;
+          docker run -d --name stage-minddaily-frontend -p 8081:8081 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_STAGE_IMAGE_NAME }};
+          exit
+          "
+
       - name: Cleanup 🧹
         run: rm -rf ~/.ssh
