@@ -4,7 +4,6 @@ RUN apk add --no-cache git
 WORKDIR /app
 COPY package*.json ./
 RUN yarn install
-EXPOSE 8081
 
 FROM base as builder
 
@@ -12,10 +11,9 @@ WORKDIR /app
 COPY . .
 RUN yarn build
 
-FROM base as development
+FROM base as runtime
 WORKDIR /app
 
-ENV NODE_ENV=production
 RUN yarn install
 
 RUN addgroup -g 1001 -S nodejs
@@ -27,9 +25,10 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/public ./public
 
-EXPOSE 8081
+# Default port to expose
+ARG PORT=8081
+ENV PORT=${PORT}
 
-ENV PORT 8081
-ENV HOSTNAME="0.0.0.0"
+EXPOSE ${PORT}
 
-CMD ["yarn", "start", "-p", "8081"]
+CMD ["sh", "-c", "yarn start -p ${PORT}"]

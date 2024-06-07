@@ -65,7 +65,7 @@ jobs:
           docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_STAGE_IMAGE_NAME }};
           docker stop stage-minddaily-frontend || true;
           docker rm stage-minddaily-frontend || true;
-          docker run -d --name stage-minddaily-frontend -p 8081:8081 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_STAGE_IMAGE_NAME }};
+          docker run -e PORT=8082 -d --name stage-minddaily-frontend -p 8082:8082 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_STAGE_IMAGE_NAME }};
           exit
           "
 

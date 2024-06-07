@@ -65,7 +65,7 @@ jobs:
           docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROD_IMAGE_NAME }};
           docker stop prod-minddaily-frontend || true;
           docker rm prod-minddaily-frontend || true;
-          docker run -d --name prod-minddaily-frontend -p 8081:8081 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROD_IMAGE_NAME }};
+          docker run -e PORT=8081 -d --name prod-minddaily-frontend -p 8081:8081 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROD_IMAGE_NAME }};
           exit
           "
 
