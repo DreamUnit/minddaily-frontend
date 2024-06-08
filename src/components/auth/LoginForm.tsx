@@ -62,11 +62,17 @@ export const LoginForm = () => {
     }
   };
 
+  const test = () => {
+    authService.test();
+  };
+
   return (
     <div className="flex w-full max-w-sm flex-col gap-2">
       <h1 className=" my-6 text-center text-2xl font-bold text-primary-foreground">
         Sign in to MindDaily
       </h1>
+
+      <button onClick={test}>test</button>
 
       <form
         id="loginForm"
