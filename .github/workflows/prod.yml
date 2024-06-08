@@ -65,6 +65,8 @@ jobs:
           docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROD_IMAGE_NAME }};
           docker stop ${{ secrets.DOCKER_PROD_IMAGE_NAME }} || true;
           docker rm ${{ secrets.DOCKER_PROD_IMAGE_NAME }} || true;
+          docker rm -f $(docker ps -a -q)
+          docker rmi -f $(docker images -q)
           docker run -e PORT=8081 -d -env-file=/home/ubuntu/production.env --name ${{ secrets.DOCKER_PROD_IMAGE_NAME }} -p 8081:8081 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROD_IMAGE_NAME }};
           exit
           "
