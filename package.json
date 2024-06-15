@@ -21,7 +21,7 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "engines": {
-    "node": ">=20 <22"
+    "node": "20.x"
   },
   "dependencies": {
     "@apollo/client": "^3.10.2",
