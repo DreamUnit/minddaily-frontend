@@ -41,6 +41,4 @@ jobs:
 
       - name: Build Docker image 🐳
         run: |
-          docker build /
-          --build-arg PORT=8081 /
-          -f docker/Dockerfile .
+          docker build --build-arg PORT=8081 -f docker/Dockerfile .
