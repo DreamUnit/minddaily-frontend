@@ -43,4 +43,4 @@ jobs:
         run: |
           docker build /
           --build-arg PORT=8081 /
-          -f docker/app.Dockerfile . 
+          -f docker/Dockerfile .

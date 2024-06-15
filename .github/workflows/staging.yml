@@ -37,7 +37,7 @@ jobs:
       - name: Build Docker image 🐳
         run: |
           docker build \
-          -f docker/app.Dockerfile \
+          -f docker/Dockerfile \
           -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_STAGE_IMAGE_NAME }}:latest \
           .
 

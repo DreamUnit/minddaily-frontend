@@ -39,7 +39,7 @@ jobs:
           docker build \
           --build-arg NEXT_PUBLIC_APP_SERVER_URL=${{ secrets.APP_SERVER_URL }} \
           --build-arg NODE_ENV=production \
-          -f docker/app.Dockerfile \
+          -f docker/Dockerfile \
           -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROD_IMAGE_NAME }}:latest \
           .
 
